@@ -1,0 +1,129 @@
+{
+  "description": "A 60-line Flask order service backed by SQLite.",
+  "present": [
+    {
+      "slug": "sql-built-by-string-interpolation",
+      "where": "app.py:29 f-string in conn.execute",
+      "kind": "seeded"
+    },
+    {
+      "slug": "n-plus-one-queries",
+      "where": "app.py:28-29 one user query per order",
+      "kind": "seeded"
+    },
+    {
+      "slug": "unbounded-result-sets",
+      "where": "app.py:26 SELECT * with no limit",
+      "kind": "seeded"
+    },
+    {
+      "slug": "fast-hash-for-passwords",
+      "where": "app.py:43 hashlib.md5 on the password",
+      "kind": "seeded"
+    },
+    {
+      "slug": "floating-point-money",
+      "where": "app.py:52 float() on the amount",
+      "kind": "seeded"
+    },
+    {
+      "slug": "outbound-calls-without-timeout",
+      "where": "app.py:53 requests.get without timeout",
+      "kind": "seeded"
+    },
+    {
+      "slug": "debug-mode-enabled",
+      "where": "app.py:61 debug=True",
+      "kind": "seeded"
+    },
+    {
+      "slug": "hardcoded-credentials-in-source",
+      "where": "app.py:12 SECRET_KEY literal",
+      "kind": "seeded"
+    },
+    {
+      "slug": "plain-http-endpoints",
+      "where": "app.py:14 http:// rates URL",
+      "kind": "seeded"
+    },
+    {
+      "slug": "file-database-in-production",
+      "where": "app.py:18 sqlite3 file database",
+      "kind": "seeded"
+    },
+    {
+      "slug": "unpinned-dependency-versions",
+      "where": "requirements.txt has no versions",
+      "kind": "seeded"
+    },
+    {
+      "slug": "no-rate-limiting",
+      "where": "no limiter anywhere",
+      "kind": "seeded"
+    },
+    {
+      "slug": "non-idempotent-payment-submission",
+      "where": "app.py:50 checkout can be repeated",
+      "kind": "incidental"
+    },
+    {
+      "slug": "client-supplied-amounts-trusted",
+      "where": "app.py:52 amount taken from the request body",
+      "kind": "seeded"
+    },
+    {
+      "slug": "idor-no-ownership-check",
+      "where": "app.py:35 order fetched by id with no owner check",
+      "kind": "seeded"
+    },
+    {
+      "slug": "unauthenticated-api-routes",
+      "where": "no route checks authentication",
+      "kind": "seeded"
+    },
+    {
+      "slug": "no-server-side-input-validation",
+      "where": "request.json used without validation",
+      "kind": "seeded"
+    },
+    {
+      "slug": "no-health-endpoint",
+      "where": "no health route",
+      "kind": "incidental"
+    },
+    {
+      "slug": "no-load-testing",
+      "where": "no load test",
+      "kind": "incidental"
+    },
+    {
+      "slug": "no-automated-tests",
+      "where": "no test files or test runner",
+      "kind": "incidental"
+    },
+    {
+      "slug": "no-end-to-end-tests",
+      "where": "no browser or end-to-end tests",
+      "kind": "incidental"
+    },
+    {
+      "slug": "no-linter-or-formatter",
+      "where": "no linter or formatter configured",
+      "kind": "incidental"
+    },
+    {
+      "slug": "no-error-tracking",
+      "where": "no error tracking or tracing",
+      "kind": "incidental"
+    },
+    {
+      "slug": "no-ci-pipeline",
+      "where": "no CI configuration",
+      "kind": "incidental"
+    }
+  ],
+  "judged_not_present": {
+    "env-file-not-ignored": "The fixture has no env file and no secrets in env; a missing .gitignore entry is not a flaw here.",
+    "no-caching": "Orders change with every checkout; nothing shows that unchanged data is being re-fetched."
+  }
+}

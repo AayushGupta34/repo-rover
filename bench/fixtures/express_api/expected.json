@@ -1,0 +1,165 @@
+{
+  "description": "A 45-line Express user API with JWT login and Mongoose.",
+  "present": [
+    {
+      "slug": "wildcard-cors",
+      "where": "server.js:8 cors() with no origin list",
+      "kind": "seeded"
+    },
+    {
+      "slug": "request-body-size-unlimited",
+      "where": "server.js:9 500mb JSON limit",
+      "kind": "seeded"
+    },
+    {
+      "slug": "process-memory-used-as-shared-state",
+      "where": "server.js:10 sessions kept in a Map",
+      "kind": "seeded"
+    },
+    {
+      "slug": "secrets-written-to-logs",
+      "where": "server.js:13 logs the login body",
+      "kind": "seeded"
+    },
+    {
+      "slug": "nosql-operator-injection",
+      "where": "server.js:14 findOne(req.body)",
+      "kind": "seeded"
+    },
+    {
+      "slug": "plaintext-password-comparison",
+      "where": "server.js:15 compares stored and submitted password",
+      "kind": "seeded"
+    },
+    {
+      "slug": "errors-returned-with-success-status",
+      "where": "server.js:15 failure returned with HTTP 200",
+      "kind": "seeded"
+    },
+    {
+      "slug": "jwt-hardcoded-secret",
+      "where": "server.js:16 signed with the literal 'secret'",
+      "kind": "seeded"
+    },
+    {
+      "slug": "tokens-never-expire",
+      "where": "server.js:16 no expiry",
+      "kind": "seeded"
+    },
+    {
+      "slug": "login-without-throttling",
+      "where": "server.js:12 unlimited login attempts",
+      "kind": "seeded"
+    },
+    {
+      "slug": "idor-no-ownership-check",
+      "where": "server.js:22 findById(req.params.id)",
+      "kind": "seeded"
+    },
+    {
+      "slug": "full-records-returned-to-clients",
+      "where": "server.js:23 whole user document returned",
+      "kind": "seeded"
+    },
+    {
+      "slug": "mass-assignment-request-body",
+      "where": "server.js:27 findByIdAndUpdate with req.body",
+      "kind": "seeded"
+    },
+    {
+      "slug": "state-change-over-get",
+      "where": "server.js:31 GET deletes a user",
+      "kind": "seeded"
+    },
+    {
+      "slug": "unbounded-result-sets",
+      "where": "server.js:37 User.find() with no limit",
+      "kind": "seeded"
+    },
+    {
+      "slug": "unbounded-parallel-fanout",
+      "where": "server.js:38 Promise.all over every user",
+      "kind": "seeded"
+    },
+    {
+      "slug": "server-side-request-forgery",
+      "where": "server.js:38 fetch of a URL from the request",
+      "kind": "seeded"
+    },
+    {
+      "slug": "unauthenticated-api-routes",
+      "where": "no route verifies the token it issues",
+      "kind": "seeded"
+    },
+    {
+      "slug": "no-server-side-input-validation",
+      "where": "no schema validation library or checks",
+      "kind": "seeded"
+    },
+    {
+      "slug": "no-rate-limiting",
+      "where": "no limiter anywhere",
+      "kind": "seeded"
+    },
+    {
+      "slug": "security-headers-missing",
+      "where": "no helmet or equivalent",
+      "kind": "seeded"
+    },
+    {
+      "slug": "unpinned-dependency-versions",
+      "where": "package.json: express is 'latest'",
+      "kind": "seeded"
+    },
+    {
+      "slug": "no-graceful-shutdown",
+      "where": "no signal handling",
+      "kind": "incidental"
+    },
+    {
+      "slug": "no-health-endpoint",
+      "where": "no health route",
+      "kind": "incidental"
+    },
+    {
+      "slug": "unstructured-console-logging",
+      "where": "console.log only",
+      "kind": "incidental"
+    },
+    {
+      "slug": "no-load-testing",
+      "where": "no load test",
+      "kind": "incidental"
+    },
+    {
+      "slug": "no-automated-tests",
+      "where": "no test files or test runner",
+      "kind": "incidental"
+    },
+    {
+      "slug": "no-end-to-end-tests",
+      "where": "no browser or end-to-end tests",
+      "kind": "incidental"
+    },
+    {
+      "slug": "no-linter-or-formatter",
+      "where": "no linter or formatter configured",
+      "kind": "incidental"
+    },
+    {
+      "slug": "no-error-tracking",
+      "where": "no error tracking or tracing",
+      "kind": "incidental"
+    },
+    {
+      "slug": "no-ci-pipeline",
+      "where": "no CI configuration",
+      "kind": "incidental"
+    }
+  ],
+  "judged_not_present": {
+    "webhook-signature-not-verified": "The word 'webhook' is an outbound URL field; the app has no inbound webhook endpoint.",
+    "env-file-not-ignored": "The fixture has no env file.",
+    "no-caching": "Every route reads per-user or mutable data; nothing shows unchanged data being re-fetched."
+  }
+}

@@ -1,0 +1,104 @@
+{
+  "description": "A single-file browser ledger using Alpine.js and localStorage.",
+  "present": [
+    {
+      "slug": "browser-storage-as-system-of-record",
+      "where": "index.html:40 state saved only to localStorage",
+      "kind": "seeded"
+    },
+    {
+      "slug": "storage-quota-not-handled",
+      "where": "index.html:40 setItem with no quota handling",
+      "kind": "seeded"
+    },
+    {
+      "slug": "multi-tab-state-overwrite",
+      "where": "no storage event or lock",
+      "kind": "seeded"
+    },
+    {
+      "slug": "imported-data-not-validated",
+      "where": "index.html:62 JSON.parse of an uploaded file straight into state",
+      "kind": "seeded"
+    },
+    {
+      "slug": "unsanitized-html-rendering",
+      "where": "index.html:49 innerHTML built from student names",
+      "kind": "seeded"
+    },
+    {
+      "slug": "floating-point-money",
+      "where": "index.html:43 parseFloat on the amount",
+      "kind": "seeded"
+    },
+    {
+      "slug": "third-party-scripts-without-integrity",
+      "where": "index.html:7-8 CDN scripts with no integrity attribute",
+      "kind": "seeded"
+    },
+    {
+      "slug": "submit-button-not-disabled",
+      "where": "index.html:21 submit button never disabled",
+      "kind": "seeded"
+    },
+    {
+      "slug": "basic-accessibility-missing",
+      "where": "index.html:15 image with no alt text",
+      "kind": "seeded"
+    },
+    {
+      "slug": "unoptimised-images",
+      "where": "index.html:15 full-size image, no srcset or lazy loading",
+      "kind": "seeded"
+    },
+    {
+      "slug": "full-height-layout-with-100vh",
+      "where": "index.html:10 height: 100vh",
+      "kind": "seeded"
+    },
+    {
+      "slug": "viewport-meta-missing",
+      "where": "no viewport meta tag",
+      "kind": "seeded"
+    },
+    {
+      "slug": "naive-datetime-handling",
+      "where": "index.html:44 locale-formatted date string stored",
+      "kind": "incidental"
+    },
+    {
+      "slug": "spreadsheet-formula-injection",
+      "where": "index.html:52 CSV export writes names unescaped",
+      "kind": "seeded"
+    },
+    {
+      "slug": "no-automated-tests",
+      "where": "no test files or test runner",
+      "kind": "incidental"
+    },
+    {
+      "slug": "no-end-to-end-tests",
+      "where": "no browser or end-to-end tests",
+      "kind": "incidental"
+    },
+    {
+      "slug": "no-linter-or-formatter",
+      "where": "no linter or formatter configured",
+      "kind": "incidental"
+    },
+    {
+      "slug": "no-error-tracking",
+      "where": "no error tracking or tracing",
+      "kind": "incidental"
+    },
+    {
+      "slug": "no-ci-pipeline",
+      "where": "no CI configuration",
+      "kind": "incidental"
+    }
+  ],
+  "judged_not_present": {
+    "env-file-not-ignored": "A static page with no secrets and no env file.",
+    "no-load-testing": "A single static file with no server; load testing does not apply."
+  }
+}

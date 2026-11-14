@@ -1,0 +1,27 @@
+# Python-generated files
+__pycache__/
+*.py[oc]
+build/
+dist/
+wheels/
+*.egg-info
+
+# Virtual environments
+.venv
+
+# Secrets and generated reports
+.env
+reporover_prompt_*.md
+
+# Run outputs, ledgers and backups
+reporover_runs/
+output/
+outputs/
+backup/
+backups/
+*.bak
+*.orig
+
+# Checkpoints and generated chaos plans
+.reporover/
+out/

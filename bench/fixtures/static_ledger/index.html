@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<!-- Synthetic benchmark fixture: a single-file hostel ledger. Deliberately flawed. -->
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Hostel Ledger</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.14.1/dist/cdn.min.js"></script>
+  <style>
+    main { height: 100vh; }
+  </style>
+</head>
+<body>
+<main x-data="ledger()" x-init="load()">
+  <img src="logo-full-size.png">
+  <h1>Hostel Ledger</h1>
+
+  <form @submit.prevent="addPayment()">
+    <input x-model="student" placeholder="Student name">
+    <input x-model="amount" placeholder="Amount">
+    <button type="submit">Record payment</button>
+  </form>
+
+  <div id="payments"></div>
+
+  <button @click="exportCsv()">Export CSV</button>
+  <input type="file" @change="importBackup($event)">
+</main>
+
+<script>
+function ledger() {
+  return {
+    student: '', amount: '', state: { payments: [] },
+    load() {
+      const saved = localStorage.getItem('ledger');
+      if (saved) this.state = JSON.parse(saved);
+      this.render();
+    },
+    save() {
+      localStorage.setItem('ledger', JSON.stringify(this.state));
+    },
+    addPayment() {
+      const amount = parseFloat(this.amount);
+      this.state.payments.push({ student: this.student, amount: amount, at: new Date().toLocaleDateString() });
+      this.save();
+      this.render();
+    },
+    render() {
+      document.getElementById('payments').innerHTML = this.state.payments
+        .map((p) => '<p>' + p.student + ' paid ' + p.amount + '</p>').join('');
+    },
+    exportCsv() {
+      const rows = this.state.payments.map((p) => p.student + ',' + p.amount + ',' + p.at).join('\n');
+      const link = document.createElement('a');
+      link.href = 'data:text/csv,' + encodeURIComponent(rows);
+      link.download = 'ledger.csv';
+      link.click();
+    },
+    importBackup(event) {
+      const reader = new FileReader();
+      reader.onload = (e) => {
+        this.state = JSON.parse(e.target.result);
+        this.save();
+        this.render();
+      };
+      reader.readAsText(event.target.files[0]);
+    },
+  };
+}
+</script>
+</body>
+</html>
